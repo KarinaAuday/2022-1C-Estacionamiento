@@ -1,2 +1,2 @@
 # 2022-1C-Estacionamiento
-![image](https://github.com/KarinaAuday/2022-1C-Estacionamiento/assets/110432987/bab3a32d-6670-4bc9-bf1c-f3df6b083872)
+![image](https://github.com/KarinaAuday/2024-1C-Estacionamiento/assets/110432987/70232fd8-dbcb-4266-ba31-828cb0297123)
