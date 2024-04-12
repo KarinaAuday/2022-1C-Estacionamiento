@@ -12,6 +12,10 @@
 
         public string Provincia { get; set; }
 
-        public string Pais { get; set; }    
+        public string Pais { get; set; }
+
+        public int ClienteId { get; set; }
+
+        public Cliente Cliente { get; set; }
     }
 }

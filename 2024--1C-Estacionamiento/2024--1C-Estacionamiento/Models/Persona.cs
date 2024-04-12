@@ -18,6 +18,7 @@
            
         }
 
-      
+        public List<Telefono> Telefonos { get; set; }
+
     }
 }

@@ -3,5 +3,9 @@
     public class Cliente : Persona
     {
         public string Cuil { get; set; }
+
+        public Direccion Direccion { get; set; }
+
+          
     }
 }
