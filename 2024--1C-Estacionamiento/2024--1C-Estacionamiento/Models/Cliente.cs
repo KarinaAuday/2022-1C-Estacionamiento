@@ -4,7 +4,7 @@
     {
         public string Cuil { get; set; }
 
-        public Direccion Direccion { get; set; }
+        public List<ClienteVehiculo> VehiculosAutorizados { get; set; } 
 
           
     }

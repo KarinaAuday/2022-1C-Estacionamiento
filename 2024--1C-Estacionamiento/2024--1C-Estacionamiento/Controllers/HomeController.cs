@@ -18,6 +18,18 @@ namespace _2024__1C_Estacionamiento.Controllers
             return View();
         }
 
+        public IActionResult Index1(int ?num)
+        {
+            
+            return View(num);
+        }
+
+        public IActionResult Index2()
+        {
+            List <String> ciudades = new List<String> { "Buenos Aires", "Roma","Madrid"};
+            return View(ciudades);
+        }
+
         public IActionResult Privacy()
         {
             return View();

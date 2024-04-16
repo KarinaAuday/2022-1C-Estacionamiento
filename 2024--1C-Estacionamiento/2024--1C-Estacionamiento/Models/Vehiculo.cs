@@ -14,6 +14,7 @@
 
         public string Tipo { get; set; }
 
-       
+        public List<ClienteVehiculo> PersonasAutorizadas { get; set; }
+
     }
 }

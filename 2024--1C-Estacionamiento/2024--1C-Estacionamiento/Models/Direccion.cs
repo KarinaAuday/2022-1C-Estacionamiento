@@ -14,8 +14,8 @@
 
         public string Pais { get; set; }
 
-        public int ClienteId { get; set; }
+        public int PersonaId { get; set; }
 
-        public Cliente Cliente { get; set; }
+        public Persona Persona { get; set; }
     }
 }
