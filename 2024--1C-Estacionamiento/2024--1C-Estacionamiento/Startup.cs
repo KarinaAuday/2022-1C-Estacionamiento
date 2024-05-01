@@ -1,6 +1,8 @@
-﻿using _2024__1C_Estacionamiento.Models;
+﻿using _2024__1C_Estacionamiento.Data;
+using _2024__1C_Estacionamiento.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace _2024__1C_Estacionamiento
 {
@@ -14,7 +16,7 @@ namespace _2024__1C_Estacionamiento
 
             //Agrego Servicios. El contexot de base de datos le agrego el Database in memory. Expreciones Lambda
 
-            //  builder.Services.AddDbContext<EstacionamientoContext>(options => options.UseInMemoryDatabase("EstacionamientoDb"));
+            builder.Services.AddDbContext<EstacionamientoContext>(options => options.UseInMemoryDatabase("EstacionamientoDb"));
 
             ////Agrego la base de datos SQL , y guardo el conection string en el appsetting.json
             //builder.Services.AddDbContext<EstacionamientoContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EstacionamientoDBCS")));

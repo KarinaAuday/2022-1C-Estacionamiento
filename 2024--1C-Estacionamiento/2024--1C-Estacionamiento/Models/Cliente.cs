@@ -14,6 +14,8 @@ namespace _2024__1C_Estacionamiento.Models
         public Direccion Direccion { get; set; }
 
 
+
+
         public List<ClienteVehiculo> VehiculosAutorizados { get; set; }
 
     }

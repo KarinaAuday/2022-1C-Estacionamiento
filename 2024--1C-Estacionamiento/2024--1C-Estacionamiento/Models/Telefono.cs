@@ -23,13 +23,13 @@ namespace _2024__1C_Estacionamiento.Models
 
         [Required(ErrorMessage = ErrorMsge.Requerido)]
         
-        public int PersonaId { get; set; }
+       
 
-        public int ClienteId { get; set; }
+         public int PersonaId { get; set; }
 
-        public Persona? Persona { get; set; }
+        public Persona Persona { get; set; }
 
-        public Cliente Cliente { get; set; }
+        //public Cliente Cliente { get; set; }
 
         [NotMapped]
         public string NumeroCompleto { get { return $"({CodArea}) - {Numero}"; } }
