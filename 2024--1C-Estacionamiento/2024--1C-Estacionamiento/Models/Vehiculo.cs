@@ -1,4 +1,8 @@
-﻿namespace _2024__1C_Estacionamiento.Models
+﻿using _2024__1C_Estacionamiento.Helpers;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace _2024__1C_Estacionamiento.Models
 {
     public class Vehiculo
     {
@@ -6,13 +10,18 @@
 
         public string Patente { get; set; }
 
-        public string Marca { get; set; }
+        [Required]
+        [Display(Name = "Marca Auto")]
+        public String Marca { get; set; }
 
-        public string Modelo { get; set; }
-
+        
+        [Required(ErrorMessage = ErrorMsge.Requerido)]
         public string Color { get; set; }
 
-        public string Tipo { get; set; }
+
+        [Range(Restrictions.FloorVehiculoAnio, Restrictions.CeilVehiculoAnio, ErrorMessage = ErrorMsge.Longitud)]
+        [Display(Name = Alias.Anio)]
+        public int AnioFabricacion { get; set; } = DateTime.Now.Year;
 
         public List<ClienteVehiculo> PersonasAutorizadas { get; set; }
 

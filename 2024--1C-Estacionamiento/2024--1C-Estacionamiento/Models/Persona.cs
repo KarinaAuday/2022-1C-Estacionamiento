@@ -8,6 +8,10 @@ namespace _2024__1C_Estacionamiento.Models
 {
     public class Persona
     {
+        public Persona()
+        {
+
+        }
         public int Id { get; set; }
 
         [Required(ErrorMessage =ErrorMsge.Requerido)]
@@ -25,6 +29,7 @@ namespace _2024__1C_Estacionamiento.Models
         [RegularExpression("^[0-9]*$", ErrorMessage = "Solo se permiten numeros")]
         [Display(Name = Alias.DNI)]
 
+     
         public string Dni { get; set; }
 
         [Required]
@@ -41,7 +46,7 @@ namespace _2024__1C_Estacionamiento.Models
            
         }
 
-        public Direccion Direccion { get; set; }
+        //public Direccion Direccion { get; set; }
 
         public List<Telefono> Telefonos { get; set; }
 

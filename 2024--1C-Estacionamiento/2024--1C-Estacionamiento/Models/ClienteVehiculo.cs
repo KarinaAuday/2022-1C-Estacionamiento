@@ -1,17 +1,20 @@
-﻿namespace _2024__1C_Estacionamiento.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace _2024__1C_Estacionamiento.Models
 {
     public class ClienteVehiculo
     {
-        public int Id { get; set; }
-
+        [Key]
         public int ClienteId { get; set; }
+        [Key]
+        public int VehiculoId { get; set; }
 
         public Cliente Cliente { get; set; }
 
-        public int VehiculoId { get; set; }
-
         public Vehiculo Vehiculo { get; set; }
 
-        
+        public bool ResponsablePrincipal { get; set; }
+
+
     }
 }
