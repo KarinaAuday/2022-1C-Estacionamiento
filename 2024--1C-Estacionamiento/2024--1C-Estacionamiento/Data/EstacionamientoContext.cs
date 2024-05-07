@@ -10,6 +10,7 @@ namespace _2024__1C_Estacionamiento.Data
         {
         }
 
+       
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
         //Defino algunas restricciones en mi BD

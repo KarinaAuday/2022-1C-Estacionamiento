@@ -6,7 +6,21 @@
 @model Persona
 
 
+@if (Model != null)
+{
+    <h2>Los Datos de la Personas son :</h2>
 
+    <ul>
+        <li>
+            <p>el nombre completo es @Model.NombreCompleto</p>
+        </li>
+
+    </ul>
+}
+else
+{
+    <h2>La Persona es Nula</h2>
+}
 <div>
     <h2>Los Datos de la Personas son :</h2>
 

@@ -53,17 +53,17 @@ namespace _2024__1C_Estacionamiento.Controllers
         {
             //  creo las Personas que traigo de la DB y la hago tolist
 
-            //  List<Persona> Personas = _contexto.Personas.ToList();
+              //List<Persona> Personas = _contexto.Personas.ToList();
 
             var personas = new RepoPersonas();
             //lista de personas
 
             ////Lo guardo uno a uno en la base de datos
-            //foreach (Persona persona in personas.Personas)
-            //{
-            //    _contexto.Add(persona);
-            //    _contexto.SaveChanges();
-            //}
+            foreach (Persona persona in personas.Personas)
+            {
+                _contexto.Add(persona);
+               _contexto.SaveChanges();
+            }
 
 
 
