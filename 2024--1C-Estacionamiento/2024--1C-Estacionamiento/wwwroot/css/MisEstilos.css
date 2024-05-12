@@ -11,7 +11,9 @@
     align-content: center;
     text-align: center;
 }
-
+.table {
+    color : antiquewhite;
+}
 .centered-image {
     display: flex;
     justify-content: center;
