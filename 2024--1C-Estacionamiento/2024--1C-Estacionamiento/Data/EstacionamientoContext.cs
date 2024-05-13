@@ -50,6 +50,7 @@ namespace _2024__1C_Estacionamiento.Data
             //#endregion
 
         }
+        public DbSet<_2024__1C_Estacionamiento.Models.Direccion> Direccion { get; set; }
 
     }
 

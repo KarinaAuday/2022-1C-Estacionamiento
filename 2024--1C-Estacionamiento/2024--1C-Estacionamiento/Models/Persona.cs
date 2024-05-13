@@ -46,7 +46,7 @@ namespace _2024__1C_Estacionamiento.Models
            
         }
 
-        //public Direccion Direccion { get; set; }
+        public Direccion Direccion { get; set; }
 
         public List<Telefono> Telefonos { get; set; }
 

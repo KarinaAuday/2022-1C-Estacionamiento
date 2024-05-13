@@ -6,7 +6,7 @@ namespace _2024__1C_Estacionamiento.Models
 {
     public class Direccion
     {
-        [Key, ForeignKey("Cliente")]
+        [Key, ForeignKey("Persona")]
 
         public int Id { get; set; }
 
@@ -20,7 +20,7 @@ namespace _2024__1C_Estacionamiento.Models
 
         public long CodPostal { get; set; }
 
-        public Cliente Cliente
+        public Persona Persona
         {
             get; set;
         }

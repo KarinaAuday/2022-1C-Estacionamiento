@@ -11,7 +11,7 @@ namespace _2024__1C_Estacionamiento.Models
         [Display(Name = "Numero Cuil")]
         public long Cuil { get; set; }
 
-        public Direccion Direccion { get; set; }
+        //public Direccion Direccion { get; set; }
 
 
 

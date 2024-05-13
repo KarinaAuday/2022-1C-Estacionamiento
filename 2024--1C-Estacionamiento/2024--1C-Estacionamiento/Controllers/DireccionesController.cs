@@ -10,22 +10,23 @@ using _2024__1C_Estacionamiento.Models;
 
 namespace _2024__1C_Estacionamiento.Controllers
 {
-    public class PersonasController : Controller
+    public class DireccionesController : Controller
     {
         private readonly EstacionamientoContext _context;
 
-        public PersonasController(EstacionamientoContext context)
+        public DireccionesController(EstacionamientoContext context)
         {
             _context = context;
         }
 
-        // GET: Personas
+        // GET: Direcciones
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Personas.ToListAsync());
+            var estacionamientoContext = _context.Direccion.Include(d => d.Persona);
+            return View(await estacionamientoContext.ToListAsync());
         }
 
-        // GET: Personas/Details/5
+        // GET: Direcciones/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,40 +34,44 @@ namespace _2024__1C_Estacionamiento.Controllers
                 return NotFound();
             }
 
-            var persona = await _context.Personas
+            var direccion = await _context.Direccion
+                .Include(d => d.Persona)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (persona == null)
+            if (direccion == null)
             {
                 return NotFound();
             }
 
-            return View(persona);
+            return View(direccion);
         }
 
-        // GET: Personas/Create
+        // GET: Direcciones/Create
         public IActionResult Create()
         {
+            ViewData["Id"] = new SelectList(_context.Personas, "Id", "Apellido");
             return View();
         }
 
-        // POST: Personas/Create
+        // POST: Direcciones/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Dni,Email")] Persona persona)
+
+        //Si necesito recibir algun dato extra que no es del modelo, lo pongo aca, y lo mando desde el formulario
+        public async Task<IActionResult> Create(string Pais,[Bind("Id,Calle,Numero,CodPostal")] Direccion direccion)
         {
             if (ModelState.IsValid)
-            {//Agrego el modelo Personas para ser mas claro, aunque no viene por default en scaffoldin es mas claro
-             //para que se guarde en la base de datos
-                _context.Personas.Add(persona);
+            {
+                _context.Add(direccion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(persona);
+            ViewData["Id"] = new SelectList(_context.Set<Persona>(), "Id", "Apellido", direccion.Id);
+            return View(direccion);
         }
 
-        // GET: Personas/Edit/5
+        // GET: Direcciones/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,23 +79,23 @@ namespace _2024__1C_Estacionamiento.Controllers
                 return NotFound();
             }
 
-            var persona = await _context.Personas.FindAsync(id);
-            if (persona == null)
+            var direccion = await _context.Direccion.FindAsync(id);
+            if (direccion == null)
             {
                 return NotFound();
             }
-            return View(persona);
+            ViewData["Id"] = new SelectList(_context.Set<Persona>(), "Id", "Apellido", direccion.Id);
+            return View(direccion);
         }
 
-        // POST: Personas/Edit/5
+        // POST: Direcciones/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Email,Dni")] Persona persona)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Calle,Numero,CodPostal")] Direccion direccion)
         {
-
-            if (id != persona.Id)
+            if (id != direccion.Id)
             {
                 return NotFound();
             }
@@ -98,29 +103,13 @@ namespace _2024__1C_Estacionamiento.Controllers
             if (ModelState.IsValid)
             {
                 try
-
                 {
-                    //Voy a buscar la persona en la base de datos y si existe hago el update de los datos que quiero. por ejemplo 
-                    // si no quiero que se pueda modificar el email, no lo pongo en el bind
-                    var personaDb = _context.Personas.Find(persona.Id);
-                    if (personaDb != null)
-                    {
-                        personaDb.Nombre = persona.Nombre;
-                        personaDb.Apellido = persona.Apellido;
-                        personaDb.Dni = persona.Dni;
-                        _context.Personas.Update(personaDb);
-                        await _context.SaveChangesAsync();
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }   
-                    
-                    
+                    _context.Update(direccion);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PersonaExists(persona.Id))
+                    if (!DireccionExists(direccion.Id))
                     {
                         return NotFound();
                     }
@@ -131,10 +120,11 @@ namespace _2024__1C_Estacionamiento.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(persona);
+            ViewData["Id"] = new SelectList(_context.Set<Persona>(), "Id", "Apellido", direccion.Id);
+            return View(direccion);
         }
 
-        // GET: Personas/Delete/5
+        // GET: Direcciones/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -142,36 +132,35 @@ namespace _2024__1C_Estacionamiento.Controllers
                 return NotFound();
             }
 
-            var persona = await _context.Personas
+            var direccion = await _context.Direccion
+                .Include(d => d.Persona)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (persona == null)
+            if (direccion == null)
             {
                 return NotFound();
             }
 
-            return View(persona);
+            return View(direccion);
         }
 
-        // POST: Personas/Delete/5
+        // POST: Direcciones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var persona = await _context.Personas.FindAsync(id);
-            if (persona != null)
+            var direccion = await _context.Direccion.FindAsync(id);
+            if (direccion != null)
             {
-                _context.Personas.Remove(persona);
+                _context.Direccion.Remove(direccion);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PersonaExists(int id)
+        private bool DireccionExists(int id)
         {
-            return _context.Personas.Any(e => e.Id == id);
+            return _context.Direccion.Any(e => e.Id == id);
         }
-
-
     }
 }
