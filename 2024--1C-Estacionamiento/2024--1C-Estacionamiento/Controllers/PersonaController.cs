@@ -26,14 +26,15 @@ namespace _2024__1C_Estacionamiento.Controllers
 
         }
         //Creo persona con query string
-        public IActionResult CrearPersona(String nombre, String apellido)
+        public IActionResult CrearPersona(string nombre, string apellido, string dni, string email)
         {
             Persona persona = new Persona()
 
             {
                 Apellido = apellido,
-                // Dni = dni,
+                Dni = dni,
                 Nombre = nombre,
+                Email = email
             };
 
             return View(persona);
