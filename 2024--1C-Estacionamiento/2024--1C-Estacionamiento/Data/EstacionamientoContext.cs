@@ -8,11 +8,20 @@ namespace _2024__1C_Estacionamiento.Data
     {
         public EstacionamientoContext(DbContextOptions options) : base(options)
         {
+
         }
 
        
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
+
+        public DbSet<Direccion> Direccion { get; set; }
+
+
+        public DbSet<ClienteVehiculo> ClientesVehiculos { get; set; }
+
+        public DbSet<Cliente> Clientes { get; set; }
+
         //Defino algunas restricciones en mi BD
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,7 +59,7 @@ namespace _2024__1C_Estacionamiento.Data
             //#endregion
 
         }
-        public DbSet<_2024__1C_Estacionamiento.Models.Direccion> Direccion { get; set; }
+      
 
     }
 
