@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/_2024__1C_Estacionamiento.styles.css" asp-append-version="true" />
-     <link rel="stylesheet" href="~/css/MisEstilos.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/MisEstilos.css" asp-append-version="true" />
 
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  bg-gradient border-bottom box-shadow mb-3 nav-k">
-           
+
 
             <div class="container-fluid">
                 <a class="menu-karina" asp-area="" asp-controller="Home" asp-action="Index"></a>
@@ -22,18 +22,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1"  >
+                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Personas" asp-action="Index">Personas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Persona" asp-action="RepoPersonas">Repositorio</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Telefonos" asp-action="Create">Telefonos</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Vehiculos" asp-action="Index">Vehiculos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Empleados" asp-action="Index">Empleados</a>
+                        </li>
+
                         @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index2">Ciudades</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index2">Ciudades</a>
                         </li> *@
                     </ul>
                 </div>
@@ -42,14 +52,17 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            
+
             @RenderBody()
-            
+
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        
+        <div class="container">
+            <hr />
+            <a asp-action="InicializarBD" asp-controller="PreCargaBd" class="btn btn-sm btn-info">Pre Carga Db</a>
+        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

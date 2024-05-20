@@ -26,6 +26,8 @@ namespace _2024__1C_Estacionamiento.Controllers
         }
 
         // GET: Personas/Details/5
+
+        //Aca va el include de direccion y telefonos para que muestre el detalle de la persona con su direccion y telefonos
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,14 +35,30 @@ namespace _2024__1C_Estacionamiento.Controllers
                 return NotFound();
             }
 
-            var persona = await _context.Personas
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var persona = await _context.Personas.Include(clt => clt.Telefonos)
+                                        .Include(clt => clt.Direccion)
+                                        .FirstOrDefaultAsync(m => m.Id == id);
+            //Incluyo los objetos del contexto
+
+
             if (persona == null)
             {
                 return NotFound();
             }
+            var direccion = await _context.Direccion
+                .FirstOrDefaultAsync(m => m.Id == id);
 
+            //if (direccion == null)
+            //{
+            //    return NotFound();
+            //}
+          
+
+            persona.Direccion = direccion;  
+            //Mando al la persona con la direccion y el telefono para que se muestre en la vista
             return View(persona);
+
+
         }
 
         // GET: Personas/Create
@@ -61,10 +79,15 @@ namespace _2024__1C_Estacionamiento.Controllers
              //para que se guarde en la base de datos
                 _context.Personas.Add(persona);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                }
+            //Redirecicono al create de Direccion para agregarle una direccion
+                return RedirectToAction("Create", "Direcciones", new { id = persona.Id });
+
+
+
             }
-            return View(persona);
-        }
+           
+        
 
         // GET: Personas/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -114,9 +137,9 @@ namespace _2024__1C_Estacionamiento.Controllers
                     else
                     {
                         return NotFound();
-                    }   
-                    
-                    
+                    }
+
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {

@@ -46,12 +46,17 @@ namespace _2024__1C_Estacionamiento.Controllers
         }
 
         // GET: Direcciones/Create
-        public IActionResult Create()
+        public IActionResult Create(int ? id)
         {
             ViewData["Id"] = new SelectList(_context.Personas, "Id", "Apellido");
+            //ViewData["Id"] = new SelectList(_context.Personas.Include(c => c.Direccion).Where(c => c.Direccion == null), "Id", "Apellido");
+
             return View();
         }
 
+        //Incluyo los objetos del contexto
+
+      
         // POST: Direcciones/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -65,7 +70,7 @@ namespace _2024__1C_Estacionamiento.Controllers
             {
                 _context.Add(direccion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Personas");
             }
             ViewData["Id"] = new SelectList(_context.Set<Persona>(), "Id", "Apellido", direccion.Id);
             return View(direccion);

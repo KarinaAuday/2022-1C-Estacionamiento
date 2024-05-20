@@ -59,6 +59,8 @@ namespace _2024__1C_Estacionamiento.Data
             //#endregion
 
         }
+        public DbSet<_2024__1C_Estacionamiento.Models.Empleado> Empleado { get; set; }
+        public DbSet<_2024__1C_Estacionamiento.Models.Telefono> Telefono { get; set; }
       
 
     }

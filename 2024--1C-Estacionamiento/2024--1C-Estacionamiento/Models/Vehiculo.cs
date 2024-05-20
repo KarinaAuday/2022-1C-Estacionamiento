@@ -8,11 +8,12 @@ namespace _2024__1C_Estacionamiento.Models
     {
         public int Id { get; set; }
 
-        public string Patente { get; set; }
+        [Required(ErrorMessage = ErrorMsge.Requerido)]
+        public int Patente { get; set; }
 
         [Required]
         [Display(Name = "Marca Auto")]
-        public String Marca { get; set; }
+        public string Marca { get; set; }
 
         
         [Required(ErrorMessage = ErrorMsge.Requerido)]
@@ -25,5 +26,15 @@ namespace _2024__1C_Estacionamiento.Models
 
         public List<ClienteVehiculo> PersonasAutorizadas { get; set; }
 
+
+
+        public Vehiculo(int patente, string marca, string color)
+        {
+            this.Patente = patente;
+            this.Marca = marca;
+            this.Color = color;
+                
+        }
+                    
     }
 }

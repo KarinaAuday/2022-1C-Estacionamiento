@@ -15,7 +15,11 @@ namespace _2024__1C_Estacionamiento.Controllers
 
         public IActionResult Index()
         {
+            //Si recibo el mensaje lo mando a la vista
+            var mensaje = TempData["Mensaje"] as string;
+            ViewBag.Mensaje = mensaje;
             return View();
+
         }
 
         public IActionResult Index1(int? num)
