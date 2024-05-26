@@ -68,11 +68,12 @@ namespace _2024__1C_Estacionamiento.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Cuil,Id,Nombre,Apellido,Dni,Email")] Cliente cliente)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Direcciones", new { PersonaId = cliente.Id });
             }
             return View(cliente);
         }
@@ -84,8 +85,10 @@ namespace _2024__1C_Estacionamiento.Controllers
             {
                 return NotFound();
             }
-
-            var cliente = await _context.Clientes.FindAsync(id);
+            //Me traer los teleofonos y direccion asociados del cliente
+            var cliente = await _context.Clientes.Include(clt => clt.Telefonos)
+                                            .Include(clt => clt.Direccion)
+                                            .FirstOrDefaultAsync(c => c.Id == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -161,6 +164,17 @@ namespace _2024__1C_Estacionamiento.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //Busqueda de CLientes
+
+        public ActionResult Buscar(string cli)
+        {
+
+            // Realiza la lógica de búsqueda utilizando el término "q".
+            var resultados = _context.Clientes.Where(c => c.Apellido.Contains(cli)).ToList();
+
+            // Devuelve la vista de resultados con la lista de resultados.
+            return View("Buscador", resultados);
+        }
         private bool ClienteExists(int id)
         {
             return _context.Clientes.Any(e => e.Id == id);

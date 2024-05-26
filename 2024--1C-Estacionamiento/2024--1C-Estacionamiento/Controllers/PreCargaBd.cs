@@ -55,13 +55,14 @@ namespace _2024__1C_Estacionamiento.Controllers
                 CodigoEmpleado = "3456"
             },
         };
-
+        #region Lista de Vehiculos
         private List<Vehiculo> vehiculos = new List<Vehiculo>()
         {
             new Vehiculo(2034444,"Ford taunus" , "Verde"),
             new Vehiculo(8484848, "Renault Clio" , "Azul") ,
             new Vehiculo(5647866, "Mercedes benz" , "amarillo"),
         };
+        #endregion
 
         #region InicializarClientes
         private void IncializarClientes()
@@ -203,6 +204,7 @@ namespace _2024__1C_Estacionamiento.Controllers
             //Mando como parametro un mensage para mostrar en la vista con ViewBag
             // return RedirectToAction("Index", "Home", ViewBag.mensaje = "PreCarga de Base de Datos finalizada" );
             TempData["Mensaje"] = "PreCarga de Base de Datos finalizada";
+            ViewBag.mensaje = "PreCarga de Base de Datos finalizada";
             return RedirectToAction("Index", "Home");
         }
 

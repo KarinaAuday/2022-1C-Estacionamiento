@@ -1,15 +1,12 @@
-﻿@model IEnumerable<Cliente>
+﻿
 
-@{
-    ViewData["Title"] = "Listado de Mis clientes";
-}
+<form method="get" action="@Url.Action("Buscar", "Clientes")">
+    <input type="text" name="cli" placeholder="Apellido del cliente" />
+    <input type="submit" value="Buscar" />
+</form>
 
-<h1>Listado de los clientes del Parking ORT</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@* <table class="table">
     <thead>
         <tr>
             <th>
@@ -52,4 +49,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table> *@
