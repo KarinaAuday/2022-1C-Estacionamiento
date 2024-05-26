@@ -37,6 +37,22 @@ namespace _2024__1C_Estacionamiento
         {
 
             builder.Services.AddControllersWithViews();
+            #region Identity
+            //se Almacena en nuestro Contexto
+            builder.Services.AddIdentity<Persona, Rol>().AddEntityFrameworkStores<EstacionamientoContext>();
+            //Customizacion de Password
+            builder.Services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 5;
+            }
+            );
+
+            //Password por defecto = Password1!
+            #endregion
         }
 
         private static void Configure(WebApplication app)

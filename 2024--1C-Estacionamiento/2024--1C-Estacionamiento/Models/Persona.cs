@@ -1,18 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using _2024__1C_Estacionamiento.Helpers;
+using Microsoft.AspNetCore.Identity;
 
 
 
 namespace _2024__1C_Estacionamiento.Models
 {
-    public class Persona
+    public class Persona : IdentityUser<int>
     {
         public Persona()
         {
 
         }
-        public int Id { get; set; }
+        //Comento Id porque ya lo tiene IdentityUser
+        //public int Id { get; set; }
 
         [Required(ErrorMessage =ErrorMsge.Requerido)]
         [StringLength(100, MinimumLength=2, ErrorMessage = ErrorMsge.Longitud)]
@@ -35,7 +37,7 @@ namespace _2024__1C_Estacionamiento.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = Alias.Email)]
-        public string Email { get; set; }
+        //public string Email { get; set; }
 
         public string NombreCompleto
         {
@@ -44,6 +46,13 @@ namespace _2024__1C_Estacionamiento.Models
                 return $"{Nombre}, {Apellido}";
             }
            
+        }
+
+        //Adecuacion de identityUser
+        public override string Email
+        {
+            get { return base.Email; }
+            set { base.Email = value; }
         }
 
         public Direccion Direccion { get; set; }
