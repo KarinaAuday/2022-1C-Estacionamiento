@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _2024__1C_Estacionamiento.Data;
 
@@ -11,9 +12,11 @@ using _2024__1C_Estacionamiento.Data;
 namespace _2024__1C_Estacionamiento.Migrations
 {
     [DbContext(typeof(EstacionamientoContext))]
-    partial class EstacionamientoContextModelSnapshot : ModelSnapshot
+    [Migration("20240602131212_identity")]
+    partial class identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
