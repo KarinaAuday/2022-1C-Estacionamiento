@@ -38,9 +38,9 @@ namespace _2024__1C_Estacionamiento.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //// lo agrego para la precicion en la BD con Fuelt Api.-
-            //modelBuilder.Entity<Estancia>().Property(est => est.Monto).HasPrecision(38, 18);
-            //modelBuilder.Entity<Pago>().Property(pag => pag.Monto).HasPrecision(38, 18);
+            // lo agrego para la precicion en la BD con Fuelt Api.-
+            modelBuilder.Entity<Estancia>().Property(est => est.Monto).HasPrecision(38, 18);
+            modelBuilder.Entity<Pago>().Property(pag => pag.Monto).HasPrecision(38, 18);
 
             //Creo la clave para mucho a muchos
 
