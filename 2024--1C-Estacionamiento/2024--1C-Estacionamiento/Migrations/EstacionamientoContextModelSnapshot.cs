@@ -256,7 +256,7 @@ namespace _2024__1C_Estacionamiento.Migrations
 
                     b.HasIndex("VehiculoId");
 
-                    b.ToTable("ClienteVehiculo");
+                    b.ToTable("ClienteVehiculo", (string)null);
                 });
 
             modelBuilder.Entity("_2024__1C_Estacionamiento.Models.Direccion", b =>
@@ -276,7 +276,7 @@ namespace _2024__1C_Estacionamiento.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Direccion");
+                    b.ToTable("Direccion", (string)null);
                 });
 
             modelBuilder.Entity("_2024__1C_Estacionamiento.Models.Estancia", b =>
@@ -308,7 +308,7 @@ namespace _2024__1C_Estacionamiento.Migrations
 
                     b.HasIndex("VehiculoId");
 
-                    b.ToTable("estancias");
+                    b.ToTable("estancias", (string)null);
                 });
 
             modelBuilder.Entity("_2024__1C_Estacionamiento.Models.Pago", b =>
@@ -330,7 +330,7 @@ namespace _2024__1C_Estacionamiento.Migrations
                     b.HasIndex("EstanciaId")
                         .IsUnique();
 
-                    b.ToTable("Pagos");
+                    b.ToTable("Pagos", (string)null);
                 });
 
             modelBuilder.Entity("_2024__1C_Estacionamiento.Models.Telefono", b =>
@@ -361,7 +361,7 @@ namespace _2024__1C_Estacionamiento.Migrations
 
                     b.HasIndex("PersonaId");
 
-                    b.ToTable("Telefono");
+                    b.ToTable("Telefono", (string)null);
                 });
 
             modelBuilder.Entity("_2024__1C_Estacionamiento.Models.Vehiculo", b =>
@@ -391,7 +391,7 @@ namespace _2024__1C_Estacionamiento.Migrations
                     b.HasIndex("Patente")
                         .IsUnique();
 
-                    b.ToTable("Vehiculos");
+                    b.ToTable("Vehiculos", (string)null);
                 });
 
             modelBuilder.Entity("_2024__1C_Estacionamiento.Models.Rol", b =>

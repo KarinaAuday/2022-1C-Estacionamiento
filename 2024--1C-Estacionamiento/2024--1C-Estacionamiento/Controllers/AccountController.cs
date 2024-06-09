@@ -131,7 +131,7 @@ namespace _2024__1C_Estacionamiento.Controllers
         public async Task<IActionResult> ListarRoles()
         {
             //2 formas de obtener los Roles Exsitentes
-            var roles = _rolManager.Roles.ToList();
+            var roles =  _rolManager.Roles.ToList();
             var roles2 = _context.Roles.ToList();
             return View(roles);
         }

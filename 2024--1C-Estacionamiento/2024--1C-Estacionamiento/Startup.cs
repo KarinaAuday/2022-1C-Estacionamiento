@@ -51,7 +51,15 @@ namespace _2024__1C_Estacionamiento
             }
             );
 
-            //Password por defecto = Password1!
+            builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
+                               options =>
+                               {
+                    options.LoginPath = "/Account/IniciarSesion";
+                    options.AccessDeniedPath = "/Account/AccesoDenegado";
+                }
+                                          );    
+
+            //Password por defecto = Password1
             #endregion
         }
 

@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _2024__1C_Estacionamiento.Data;
 using _2024__1C_Estacionamiento.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _2024__1C_Estacionamiento.Controllers
 {
+    //Requiere que el usuario este autenticado
+    [Authorize]
     public class ClientesController : Controller
     {
         private readonly EstacionamientoContext _context;

@@ -61,6 +61,14 @@ namespace _2024__1C_Estacionamiento.Controllers
                 Email = "Albert@gmail.com",
                 CodigoEmpleado = "3456"
             },
+            new Empleado
+            {
+                Dni = "23456789",
+                Nombre = "Karina",
+                Apellido = "Auday",
+                Email = "kariauday@gmail.com",
+                CodigoEmpleado = "3459"
+            },
         };
         #region Lista de Vehiculos
         private List<Vehiculo> vehiculos = new List<Vehiculo>()

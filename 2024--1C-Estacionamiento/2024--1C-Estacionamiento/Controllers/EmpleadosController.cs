@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _2024__1C_Estacionamiento.Data;
 using _2024__1C_Estacionamiento.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _2024__1C_Estacionamiento.Controllers
 {
@@ -26,6 +27,7 @@ namespace _2024__1C_Estacionamiento.Controllers
         }
 
         // GET: Empleados/Details/5
+        [Authorize(Roles = "Admin,cliente")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +46,7 @@ namespace _2024__1C_Estacionamiento.Controllers
         }
 
         // GET: Empleados/Create
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             return View();
@@ -52,6 +55,7 @@ namespace _2024__1C_Estacionamiento.Controllers
         // POST: Empleados/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CodigoEmpleado,Id,Nombre,Apellido,Dni,Email")] Empleado empleado)
